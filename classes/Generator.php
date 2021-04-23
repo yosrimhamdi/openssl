@@ -38,7 +38,7 @@ class Generator {
     $this->authority = $authority;
   }
 
-  private function genKeyPair() {
+  private function getKeyPair() {
     return openssl_pkey_new([
       'digest_alg'   => self::DIGEST_ALGO,
       'private_key_type'   => self::CIPHER_ALGO,
@@ -46,17 +46,17 @@ class Generator {
     ]);
   }
 
-  private function genPrivateKey() {
+  private function getPrivateKey() {
     openssl_pkey_export($this->keyPair, $private, $this->password);
 
     return $private;
   }
 
-  private function genPublicKey() {
+  private function getPublicKey() {
     return openssl_pkey_get_details($this->keyPair)['key'];
   }
 
-  private function genRequest() {
+  private function getRequest() {
     $userConfig = [
       'countryName' => $this->country,
       'organizationName' => $this->organization,
@@ -68,13 +68,13 @@ class Generator {
     return openssl_csr_new($userConfig, $this->keyPair);
   }
 
-  private function genRequestContent() {
+  private function getRequestContent() {
     return openssl_csr_export($this->request, $requestContent);
 
     return $requestContent;
   }
 
-  private function genCertificate() {
+  private function getCertificate() {
     return openssl_csr_sign(
       $this->request,
       $this->authority->certificate,
@@ -85,19 +85,19 @@ class Generator {
     );
   }
 
-  private function genCertificateContent() {
+  private function getCertificateContent() {
     openssl_x509_export($this->certificate, $certificateContent);
 
     return $certificateContent;
   }
 
   public function genFiles() {
-    $this->keyPair = $this->genKeyPair();
-    $this->privateKey = $this->genPrivateKey();
-    $this->publicKey = $this->genPublicKey();
-    $this->request = $this->genRequest();
-    $this->requestContent = $this->genRequestContent();
-    $this->certificate = $this->genCertificate();
-    $this->certificateContent = $this->genCertificateContent();
+    $this->keyPair = $this->getKeyPair();
+    $this->privateKey = $this->getPrivateKey();
+    $this->publicKey = $this->getPublicKey();
+    $this->request = $this->getRequest();
+    $this->requestContent = $this->getRequestContent();
+    $this->certificate = $this->getCertificate();
+    $this->certificateContent = $this->getCertificateContent();
   }
 }
