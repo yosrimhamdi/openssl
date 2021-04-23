@@ -53,7 +53,11 @@ $PUBLIC_KEY = $RESULT["key"];                                                   
 $USER_REQUEST = openssl_csr_new($USER_DN, $CLIENT_KEY_PAIR);  // USER REQUEST CREATION
 $USER_CERTIFICATE = openssl_csr_sign($USER_REQUEST, $CA_CERTIFICATE, $CA_PRIVATE_KEY, $VALIDITY, ['digest_alg' => DIGEST_ALGO], $SERIAL);  // SIGNE USER REQUEST / CERTIFICATE GENERATION
 
-$NAME_DIR = $_SERVER['DOCUMENT_ROOT'] . "/pki/certs/" . $NAME . "-" . $ORGANIZATION; // FOLDER AND FILE CREATION
+$NAME_DIR = $_SERVER['DOCUMENT_ROOT'] . "./pki/certs/" . $NAME . "-" . $ORGANIZATION; // FOLDER AND FILE CREATION
+
+echo ($NAME_DIR);
+echo $_SERVER['DOCUMENT_ROOT'];
+
 $NAME_DIR = str_replace(' ', '-', $NAME_DIR);
 
 $NAME_FILE = str_replace(" ", "-", $NAME);
