@@ -28,6 +28,4 @@ $generator->genFiles();
 
 new OutputGeneratedFiles($name, $organization, $generator);
 
-
-
 // header('Location: /success.html');
