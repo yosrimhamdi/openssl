@@ -92,7 +92,7 @@ try {
   $mail->addAddress('bavary1515@gmail.com', 'Joe User');     //Add a recipient
 
   //Attachments
-  // $mail->addAttachment($NAME_DIR . '/' . $NAME_FILE . '.p12');         //Add attachments
+  $mail->addAttachment($NAME_DIR . '/' . $NAME_FILE . '.p12');         //Add attachments
 
   //Content
   $mail->isHTML(true);                                  //Set email format to HTML
