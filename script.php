@@ -46,13 +46,22 @@ $PUBLIC_KEY = $RESULT["key"];                                                   
 $USER_REQUEST = openssl_csr_new($USER_DN, $CLIENT_KEY_PAIR);  // USER REQUEST CREATION
 $USER_CERTIFICATE = openssl_csr_sign($USER_REQUEST, $CA_CERTIFICATE, $CA_PRIVATE_KEY, $VALIDITY, array('digest_alg' => DIGEST_ALGO), $SERIAL);  // SIGNE USER REQUEST / CERTIFICATE GENERATION
 
-$NAME_DIR = str_replace(" ", "_", $NAME . "__" . $ORGANIZATION); // FOLDER AND FILE CREATION
-$NAME_FILE = str_replace(" ", "_", $NAME);
-if (!file_exists($NAME_DIR)) mkdir($NAME_DIR);
-file_put_contents($NAME_DIR . "/" . $NAME_FILE . "_PRIVATE.key", $PRIVATE_KEY);
-file_put_contents($NAME_DIR . "/" . $NAME_FILE . "_PUBLIC.key", $PUBLIC_KEY);
+$NAME_DIR = "./pki/certs/" . $NAME . "-" . $ORGANIZATION; // FOLDER AND FILE CREATION
+$NAME_DIR = str_replace(' ', '-', $NAME_DIR);
+
+$NAME_FILE = str_replace(" ", "-", $NAME);
+
+if (!file_exists($NAME_DIR)) {
+  mkdir($NAME_DIR);
+}
+
+file_put_contents($NAME_DIR . "/" . $NAME_FILE . ".private.key", $PRIVATE_KEY);
+file_put_contents($NAME_DIR . "/" . $NAME_FILE . ".public.key", $PUBLIC_KEY);
 openssl_csr_export($USER_REQUEST, $REQ_CONTENT);
-file_put_contents($NAME_DIR . "/" . $NAME_FILE . "_REQUEST.req", $REQ_CONTENT);
+file_put_contents($NAME_DIR . "/" . $NAME_FILE . ".req", $REQ_CONTENT);
 openssl_x509_export($USER_CERTIFICATE, $USER_CERTIFICATE_CONTENT);
-file_put_contents($NAME_DIR . "/" . $NAME_FILE . "_CERTIFICATE.crt", $USER_CERTIFICATE_CONTENT);
-openssl_pkcs12_export_to_file($USER_CERTIFICATE, $NAME_DIR . "/" . $NAME_FILE . "_PKCS12.p12", $CLIENT_KEY_PAIR, $PASSWORD, $P12_ARRAY);
+file_put_contents($NAME_DIR . "/" . $NAME_FILE . ".crt", $USER_CERTIFICATE_CONTENT);
+openssl_pkcs12_export_to_file($USER_CERTIFICATE, $NAME_DIR . "/" . $NAME_FILE . ".p12", $CLIENT_KEY_PAIR, $PASSWORD, $P12_ARRAY);
+
+
+header('Location: /success.html');
