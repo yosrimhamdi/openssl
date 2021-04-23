@@ -38,7 +38,7 @@ class Generator {
     $this->authority = $authority;
   }
 
-  function genKeyPair() {
+  private function genKeyPair() {
     return openssl_pkey_new([
       'digest_alg'   => self::DIGEST_ALGO,
       'private_key_type'   => self::CIPHER_ALGO,
@@ -46,17 +46,17 @@ class Generator {
     ]);
   }
 
-  function genPrivateKey() {
+  private function genPrivateKey() {
     openssl_pkey_export($this->keyPair, $private, $this->password);
 
     return $private;
   }
 
-  function genPublicKey() {
+  private function genPublicKey() {
     return openssl_pkey_get_details($this->keyPair)['key'];
   }
 
-  function genRequest() {
+  private function genRequest() {
     $userConfig = [
       'countryName' => $this->country,
       'organizationName' => $this->organization,
@@ -68,13 +68,13 @@ class Generator {
     return openssl_csr_new($userConfig, $this->keyPair);
   }
 
-  function genRequestContent() {
+  private function genRequestContent() {
     return openssl_csr_export($this->request, $requestContent);
 
     return $requestContent;
   }
 
-  function genCertificate() {
+  private function genCertificate() {
     return openssl_csr_sign(
       $this->request,
       $this->authority->certificate,
@@ -85,7 +85,7 @@ class Generator {
     );
   }
 
-  function genCertificateContent() {
+  private function genCertificateContent() {
     openssl_x509_export($this->certificate, $certificateContent);
 
     return $certificateContent;
