@@ -26,6 +26,6 @@ $generator = new Auth\Generator(
 
 $generator->genFiles();
 
-new OutputGeneratedFiles($name, $organization, $generator);
+new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
 // header('Location: /success.html');
