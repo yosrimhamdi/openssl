@@ -1,0 +1,11 @@
+{
+  "name": "noname/openssl",
+  "description": "generating certification for auth",
+  "authors": [
+    {
+      "name": "yosrimhamdi",
+      "email": "bavary1515@gmail.com"
+    }
+  ],
+  "require": {}
+}
