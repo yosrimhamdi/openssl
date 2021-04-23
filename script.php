@@ -10,8 +10,8 @@ $MAIL         = $_POST['mail'];
 define('CIPHER_ALGO', OPENSSL_KEYTYPE_RSA);
 define('DIGEST_ALGO', 'sha256');
 define('KEY_SIZE', 2048);
-$PATH_TO_CA_CERTIFICATE   = "ca/uit.crt";
-$PATH_TO_CA_KEY     = "ca/uit.key";
+$PATH_TO_CA_CERTIFICATE   = "pki/ca/fsb.crt";
+$PATH_TO_CA_KEY     = "pki/ca/fsb.key";
 
 // VARIABLE DECLARATION
 $COUNTRY      = "TN";
@@ -32,7 +32,7 @@ $USER_DN = array(
 );
 
 $CA_CERTIFICATE   = file_get_contents($PATH_TO_CA_CERTIFICATE);
-$CA_PRIVATE_KEY   = array(file_get_contents($PATH_TO_CA_KEY), "test");
+$CA_PRIVATE_KEY   = array(file_get_contents($PATH_TO_CA_KEY), "azerty");
 
 $P12_ARRAY = array(
   'extracerts'       => $CA_CERTIFICATE,
