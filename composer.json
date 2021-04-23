@@ -7,5 +7,7 @@
       "email": "bavary1515@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "phpmailer/phpmailer": "^6.4"
+  }
 }
