@@ -26,7 +26,7 @@ class Generator {
   public $certificate;
   public $certificateContent;
 
-  function __construct($name, $organization, $organization_unit, $validity, $password, $mail, $country = 'TN', $serial = '12345678', $authority) {
+  function __construct($name, $organization, $organization_unit, $validity, $password, $mail, $country, $serial, $authority) {
     $this->name = $name;
     $this->organization = $organization;
     $this->organization_unit = $organization_unit;
