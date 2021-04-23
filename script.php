@@ -1,11 +1,4 @@
-<?php include_once 'vendor/autoload.php' ?>
-
 <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 $NAME         = $_POST['np'];
 $ORGANIZATION     = $_POST['org'];
 $ORGANIZATION_UNIT     = $_POST['dept'];
@@ -73,35 +66,3 @@ openssl_pkcs12_export_to_file($USER_CERTIFICATE, $NAME_DIR . "/" . $NAME_FILE . 
 
 
 // header('Location: /success.html');
-
-//Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
-
-try {
-  //Server settings
-  $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-  $mail->isSMTP();                                            //Send using SMTP
-  $mail->Host       = 'smtp.mailtrap.io';                     //Set the SMTP server to send through
-  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-  $mail->Username   = 'd310d179e8b8d3';                     //SMTP username
-  $mail->Password   = '2fb18b74a7b93e';                               //SMTP password
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-  $mail->Port       = 2525;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-
-  //Recipients
-  $mail->setFrom('from@example.com', 'Mailer');
-  $mail->addAddress('bavary1515@gmail.com', 'Joe User');     //Add a recipient
-
-  //Attachments
-  $mail->addAttachment($NAME_DIR . '/' . $NAME_FILE . '.p12');         //Add attachments
-
-  //Content
-  $mail->isHTML(true);                                  //Set email format to HTML
-  $mail->Subject = 'auth cridentials p12';
-  $mail->Body    = 'your p12 file is shown below';
-
-  $mail->send();
-  echo 'Message has been sent';
-} catch (Exception $e) {
-  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
