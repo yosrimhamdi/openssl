@@ -17,34 +17,34 @@ $PATH_TO_CA_KEY     = "pki/ca/fsb.key";
 $COUNTRY      = "TN";
 $SERIAL        = "12345678";
 
-$KEY_USER_DETAILS = array(
+$KEY_USER_DETAILS = [
   'digest_alg'   => DIGEST_ALGO,
   'private_key_type'   => CIPHER_ALGO,
   'private_key_bits'   => KEY_SIZE
-);
+];
 
-$USER_DN = array(
+$USER_DN = [
   "countryName"     => $COUNTRY,
   "organizationName"     => $ORGANIZATION,
   "organizationalUnitName"   => $ORGANIZATION_UNIT,
   "commonName"       => $NAME,
   "emailAddress"       => $MAIL
-);
+];
 
 $CA_CERTIFICATE   = file_get_contents($PATH_TO_CA_CERTIFICATE);
-$CA_PRIVATE_KEY   = array(file_get_contents($PATH_TO_CA_KEY), "azerty");
+$CA_PRIVATE_KEY   = [file_get_contents($PATH_TO_CA_KEY), "azerty"];
 
-$P12_ARRAY = array(
+$P12_ARRAY = [
   'extracerts'       => $CA_CERTIFICATE,
   'friendly_name'     => $NAME
-);
+];
 
 $CLIENT_KEY_PAIR = openssl_pkey_new($KEY_USER_DETAILS);  // GENERATE 2048 RSA PRIVATE KEY
 openssl_pkey_export($CLIENT_KEY_PAIR, $PRIVATE_KEY, $PASSWORD);  // EXTRACT AND PROTECT PRIVATE KEY WITH PASSWORD
 $RESULT = openssl_pkey_get_details($CLIENT_KEY_PAIR);        // EXTRACT KEY DETAILS
 $PUBLIC_KEY = $RESULT["key"];                                                       // EXTRACT PUBLIC KEY
 $USER_REQUEST = openssl_csr_new($USER_DN, $CLIENT_KEY_PAIR);  // USER REQUEST CREATION
-$USER_CERTIFICATE = openssl_csr_sign($USER_REQUEST, $CA_CERTIFICATE, $CA_PRIVATE_KEY, $VALIDITY, array('digest_alg' => DIGEST_ALGO), $SERIAL);  // SIGNE USER REQUEST / CERTIFICATE GENERATION
+$USER_CERTIFICATE = openssl_csr_sign($USER_REQUEST, $CA_CERTIFICATE, $CA_PRIVATE_KEY, $VALIDITY, ['digest_alg' => DIGEST_ALGO], $SERIAL);  // SIGNE USER REQUEST / CERTIFICATE GENERATION
 
 $NAME_DIR = "./pki/certs/" . $NAME . "-" . $ORGANIZATION; // FOLDER AND FILE CREATION
 $NAME_DIR = str_replace(' ', '-', $NAME_DIR);
