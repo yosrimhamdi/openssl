@@ -1,14 +1,14 @@
 <?php require 'vendor/autoload.php' ?>
 
 <?php
-$name         = $_POST['np'];
-$organization     = $_POST['org'];
-$organization_unit     = $_POST['dept'];
-$validity      = $_POST['validite'];
-$password       = $_POST['mp'];
-$mail         = $_POST['mail'];
-$country      = 'TN';
-$serial        = '12345678';
+$name = $_POST['np'];
+$organization = $_POST['org'];
+$organization_unit = $_POST['dept'];
+$validity = $_POST['validite'];
+$password = $_POST['mp'];
+$mail = $_POST['mail'];
+$country = 'TN';
+$serial = '12345678';
 
 $authority = new Authority();
 
