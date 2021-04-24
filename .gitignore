@@ -1,2 +1,2 @@
-pki/certs/*
+pki/certs/
 /vendor/

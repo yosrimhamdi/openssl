@@ -1,6 +1,10 @@
 <?php require 'vendor/autoload.php' ?>
 
 <?php
+if (!file_exists('/pki/certs')) {
+  mkdir('/pki/certs');
+}
+
 $name = $_POST['np'];
 $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
