@@ -52,5 +52,8 @@ class OutputGeneratedFiles {
       'extracerts'       => $this->authority->certificate,
       'friendly_name'     => $this->objectName
     ]);
+
+
+    echo "<a href='$_SERVER[HTTP_ORIGIN]/pki/certs/$this->fileName/$this->fileName.p12'> sdf </a>";
   }
 }
