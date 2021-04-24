@@ -26,15 +26,15 @@ $generator = new Auth\Generator(
   $authority
 );
 
-$generator->genCertsDir();
-$generator->genFiles();
+// $generator->genCertsDir();
+// $generator->genFiles();
 
-new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
+// new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-header('Location: /success.html');
+// header('Location: /success.html');
 
-$mail = new Mail($name, $organization);
-$mail->send();
+// $mail = new Mail($name, $organization);
+// $mail->send();
 
 $userController = new UsersController();
 
