@@ -44,7 +44,7 @@ class Mail {
 
       $this->mail->send();
 
-      header('Location: /success.html');
+      header("Location: $_SERVER[DOCUMENT_ROOT]/success.html");
     } catch (Exception $e) {
       echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
     }
