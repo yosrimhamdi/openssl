@@ -1,16 +1,8 @@
 <?php require 'vendor/autoload.php' ?>
-
 <?php
 
-// use Dotenv;
-
-if (!file_exists('./pki/certs')) {
-  mkdir('./pki/certs');
-}
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
-print_r($_ENV);
 
 $name = $_POST['np'];
 $organization = $_POST['org'];
@@ -21,25 +13,26 @@ $mail = $_POST['mail'];
 $country = 'TN';
 $serial = '12345678';
 
-// $authority = new Authority();
+$authority = new Authority();
 
-// $generator = new Auth\Generator(
-//   $name,
-//   $organization,
-//   $organization_unit,
-//   $validity,
-//   $password,
-//   $mail,
-//   $country,
-//   $serial,
-//   $authority
-// );
+$generator = new Auth\Generator(
+  $name,
+  $organization,
+  $organization_unit,
+  $validity,
+  $password,
+  $mail,
+  $country,
+  $serial,
+  $authority
+);
 
-// $generator->genFiles();
+$generator->genCertsDir();
+$generator->genFiles();
 
-// new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
+new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
 $mail = new Mail($name, $organization);
-// $mail->send();
+$mail->send();
 
 // header('Location: /success.html');

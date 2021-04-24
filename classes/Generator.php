@@ -38,6 +38,24 @@ class Generator {
     $this->authority = $authority;
   }
 
+  public function genCertsDir() {
+    echo $root = $_SERVER['DOCUMENT_ROOT'];
+
+    if (!file_exists($root . '/pki/certs')) {
+      mkdir($root . '/pki/certs');
+    }
+  }
+
+  public function genFiles() {
+    $this->keyPair = $this->getKeyPair();
+    $this->privateKey = $this->getPrivateKey();
+    $this->publicKey = $this->getPublicKey();
+    $this->request = $this->getRequest();
+    $this->requestContent = $this->getRequestContent();
+    $this->certificate = $this->getCertificate();
+    $this->certificateContent = $this->getCertificateContent();
+  }
+
   private function getKeyPair() {
     return openssl_pkey_new([
       'digest_alg'   => self::DIGEST_ALGO,
@@ -89,15 +107,5 @@ class Generator {
     openssl_x509_export($this->certificate, $certificateContent);
 
     return $certificateContent;
-  }
-
-  public function genFiles() {
-    $this->keyPair = $this->getKeyPair();
-    $this->privateKey = $this->getPrivateKey();
-    $this->publicKey = $this->getPublicKey();
-    $this->request = $this->getRequest();
-    $this->requestContent = $this->getRequestContent();
-    $this->certificate = $this->getCertificate();
-    $this->certificateContent = $this->getCertificateContent();
   }
 }
