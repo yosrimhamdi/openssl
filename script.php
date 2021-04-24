@@ -1,7 +1,7 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 
-if ($_ENV['PHP_ENV'] = 'development') {
+if ($_ENV['PHP_ENV'] === 'development') {
   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
   $dotenv->load();
 }
