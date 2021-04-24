@@ -12,26 +12,26 @@ $serial = '12345678';
 
 new ImportEnv();
 
-// $authority = new Authority();
+$authority = new Authority();
 
-// $generator = new Auth\Generator(
-//   $name,
-//   $organization,
-//   $organization_unit,
-//   $validity,
-//   $password,
-//   $mail,
-//   $country,
-//   $serial,
-//   $authority
-// );
+$generator = new Auth\Generator(
+  $name,
+  $organization,
+  $organization_unit,
+  $validity,
+  $password,
+  $mail,
+  $country,
+  $serial,
+  $authority
+);
 
-// $generator->genCertsDir();
-// $generator->genFiles();
+$generator->genCertsDir();
+$generator->genFiles();
 
-// new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
+new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-// header('Location: /success.html');
+header('Location: /success.html');
 
 $mail = new Mail($name, $organization);
 $mail->send();
