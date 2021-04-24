@@ -7,4 +7,4 @@ heorku:
 		git push heroku master
 		heroku open
 
-both: git heroku
+both: git && heroku
