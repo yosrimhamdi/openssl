@@ -94,3 +94,10 @@ body {
     line-height: 70px;
   }
 }
+
+.select {
+  border: 1px solid #ced4da;
+  color: #6c757d;
+  width: 100%;
+  outline: none;
+}

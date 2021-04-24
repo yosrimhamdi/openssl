@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <title>p12 authentication</title>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
       rel="stylesheet"
@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="registration-form">
-      <form>
+      <form action="/script.php" method="POST">
         <div class="form-icon">
           <span><i class="icon icon-user"></i></span>
         </div>
@@ -25,15 +25,42 @@
           <input
             type="text"
             class="form-control item"
-            id="username"
+            name="np"
             placeholder="Username"
           />
         </div>
         <div class="form-group">
           <input
+            type="text"
+            class="form-control item"
+            name="org"
+            placeholder="Organisation"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control item"
+            name="dept"
+            placeholder="Departement"
+          />
+        </div>
+        <div class="form-group">
+          <select
+            class="form-select item select"
+            aria-label="Default select example"
+            name="validite"
+          >
+            <option value="365" selected>Validite: one year</option>
+            <option value="730">Validite: two years</option>
+            <option value="1095">Validite: three years</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input
             type="password"
             class="form-control item"
-            id="password"
+            name="mp"
             placeholder="Password"
           />
         </div>
@@ -41,41 +68,16 @@
           <input
             type="text"
             class="form-control item"
-            id="email"
+            name="mail"
             placeholder="Email"
           />
         </div>
         <div class="form-group">
-          <input
-            type="text"
-            class="form-control item"
-            id="phone-number"
-            placeholder="Phone Number"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control item"
-            id="birth-date"
-            placeholder="Birth Date"
-          />
-        </div>
-        <div class="form-group">
-          <button type="button" class="btn btn-block create-account">
-            Create Account
+          <button type="submit" class="btn btn-block create-account">
+            Receive p12 file
           </button>
         </div>
       </form>
     </div>
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"
-    ></script>
-    <script src="assets/js/script.js"></script>
   </body>
 </html>
