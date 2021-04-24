@@ -1,10 +1,7 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 
-if (!isset($_ENV['PHP_ENV'])) {
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->load();
-}
+new ImportEnv();
 
 $name = $_POST['np'];
 $organization = $_POST['org'];
@@ -35,6 +32,6 @@ $generator->genFiles();
 new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
 $mail = new Mail($name, $organization);
-$mail->send();
+// $mail->send();
 
 header('Location: /success.html');
