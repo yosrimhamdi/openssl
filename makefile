@@ -3,8 +3,10 @@ git:
 		git commit -m "$m"
 		git push origin master
 
-heorku:
+heroku:
 		git push heroku master
 		heroku open
 
-both: git && heroku
+both:
+	$(MAKE) git
+	$(MAKE) heroku
