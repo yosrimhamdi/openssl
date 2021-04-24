@@ -13,14 +13,7 @@ class Generator {
   private $serial;
 
   private $authority;
-
-  public $keyPair;
-  public $privateKey;
-  public $publicKey;
-  public $request;
-  public $requestContent;
-  public $certificate;
-  public $certificateContent;
+  private $files = [];
 
   function __construct($name, $organization, $organization_unit, $validity, $password, $mail, $country, $serial, $authority) {
     $this->name = $name;
@@ -35,21 +28,21 @@ class Generator {
   }
 
   public function genCertsDir() {
-    $root = $_SERVER['DOCUMENT_ROOT'];
+    $path = $_SERVER['DOCUMENT_ROOT'] . '/pki/certs';
 
-    if (!file_exists($root . '/pki/certs')) {
-      mkdir($root . '/pki/certs');
+    if (!file_exists($path)) {
+      mkdir($path);
     }
   }
 
   public function genFiles() {
-    $this->keyPair = $this->getKeyPair();
-    $this->privateKey = $this->getPrivateKey();
-    $this->publicKey = $this->getPublicKey();
-    $this->request = $this->getRequest();
-    $this->requestContent = $this->getRequestContent();
-    $this->certificate = $this->getCertificate();
-    $this->certificateContent = $this->getCertificateContent();
+    $this->files = array_merge($this->files, ['keyPair' => $this->getKeyPair()]);
+    $this->files = array_merge($this->files, ['privateKey' => $this->getPrivateKey()]);
+    $this->files = array_merge($this->files, ['publicKey' => $this->getPublicKey()]);
+    $this->files = array_merge($this->files, ['request' => $this->getRequest()]);
+    $this->files = array_merge($this->files, ['requestContent' => $this->getRequestContent()]);
+    $this->files = array_merge($this->files, ['certificate' => $this->getCertificate()]);
+    $this->files = array_merge($this->files, ['certificateContent' => $this->getCertificateContent()]);
   }
 
   private function getKeyPair() {
@@ -61,13 +54,13 @@ class Generator {
   }
 
   private function getPrivateKey() {
-    openssl_pkey_export($this->keyPair, $private, $this->password);
+    openssl_pkey_export($this->files['keyPair'], $private, $this->password);
 
     return $private;
   }
 
   private function getPublicKey() {
-    return openssl_pkey_get_details($this->keyPair)['key'];
+    return openssl_pkey_get_details($this->files['keyPair'])['key'];
   }
 
   private function getRequest() {
@@ -79,18 +72,18 @@ class Generator {
       'emailAddress' => $this->mail
     ];
 
-    return openssl_csr_new($userConfig, $this->keyPair);
+    return openssl_csr_new($userConfig, $this->files['keyPair']);
   }
 
   private function getRequestContent() {
-    return openssl_csr_export($this->request, $requestContent);
+    return openssl_csr_export($this->files['request'], $requestContent);
 
     return $requestContent;
   }
 
   private function getCertificate() {
     return openssl_csr_sign(
-      $this->request,
+      $this->files['request'],
       $this->authority->certificate,
       $this->authority->key,
       $this->validity,
@@ -100,8 +93,12 @@ class Generator {
   }
 
   private function getCertificateContent() {
-    openssl_x509_export($this->certificate, $certificateContent);
+    openssl_x509_export($this->files['certificate'], $certificateContent);
 
     return $certificateContent;
+  }
+
+  public function getFiles() {
+    return $this->files;
   }
 }

@@ -41,12 +41,14 @@ class OutputGeneratedFiles {
   }
 
   private function save() {
-    file_put_contents($this->dirName . '/' . $this->fileName . '.private.key', $this->generator->privateKey);
-    file_put_contents($this->dirName . '/' . $this->fileName . '.public.key', $this->generator->publicKey);
-    file_put_contents($this->dirName . '/' . $this->fileName . '.req', $this->generator->requestContent);
-    file_put_contents($this->dirName . '/' . $this->fileName . '.crt', $this->generator->certificateContent);
+    $files = $this->generator->getFiles();
 
-    openssl_pkcs12_export_to_file($this->generator->certificate, $this->dirName . '/' . $this->fileName . '.p12', $this->generator->keyPair, $this->password, [
+    file_put_contents($this->dirName . '/' . $this->fileName . '.private.key', $files['privateKey']);
+    file_put_contents($this->dirName . '/' . $this->fileName . '.public.key', $files['publicKey']);
+    file_put_contents($this->dirName . '/' . $this->fileName . '.req', $files['requestContent']);
+    file_put_contents($this->dirName . '/' . $this->fileName . '.crt', $files['certificateContent']);
+
+    openssl_pkcs12_export_to_file($files['certificate'], $this->dirName . '/' . $this->fileName . '.p12', $files['keyPair'], $this->password, [
       'extracerts'       => $this->authority->certificate,
       'friendly_name'     => $this->objectName
     ]);
