@@ -5,11 +5,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class Mail {
-  const HOST = 'smtp-mail.outlook.com';
-  const USER_NAME = 'yosrimhamdi@outlook.com';
-  const PASSWORD = 'rp)(qV$u@_m_nb_f279_';
-  const PORT = 587;
-
   private $userName;
   private $organization;
   private $mail;
@@ -27,14 +22,14 @@ class Mail {
       //Server settings
       $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
       $this->mail->isSMTP();                                            //Send using SMTP
-      $this->mail->Host       = 'smtp-mail.outlook.com';                     //Set the SMTP server to send through
+      $this->mail->Host       = $_ENV['MAIL_HOST'];                     //Set the SMTP server to send through
       $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $this->mail->Username   = 'yosrimhamdi@outlook.com';                     //SMTP username
-      $this->mail->Password   = 'rp)(qV$u@_m_nb_f279_';                               //SMTP password
+      $this->mail->Username   = $_ENV['MAIL_USERNAME'];                     //SMTP username
+      $this->mail->Password   = $_ENV['MAIL_USER_PASSWORD'];                               //SMTP password
       $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-      $this->mail->Port       = 587;
+      $this->mail->Port       = $_ENV['MAIL_PORT'];
       //Recipients
-      $this->mail->setFrom(self::USER_NAME, 'yosri mhamdi');
+      $this->mail->setFrom($_ENV['MAIL_USERNAME'], 'yosri mhamdi');
       $this->mail->addAddress('bavary1515@gmail.com', 'Joe User');
 
       //Attachments
