@@ -33,7 +33,5 @@ new ImportEnv();
 
 // header('Location: /success.html');
 
-print_r($_ENV);
-
 $mail = new Mail($name, $organization);
 $mail->send();
