@@ -3,10 +3,6 @@
 namespace Auth;
 
 class Generator {
-  const CIPHER_ALGO = OPENSSL_KEYTYPE_RSA;
-  const DIGEST_ALGO =  'sha256';
-  const KEY_SIZE = 2048;
-
   private $name;
   private $organization;
   private $organization_unit;
@@ -39,7 +35,7 @@ class Generator {
   }
 
   public function genCertsDir() {
-    echo $root = $_SERVER['DOCUMENT_ROOT'];
+    $root = $_SERVER['DOCUMENT_ROOT'];
 
     if (!file_exists($root . '/pki/certs')) {
       mkdir($root . '/pki/certs');
@@ -58,9 +54,9 @@ class Generator {
 
   private function getKeyPair() {
     return openssl_pkey_new([
-      'digest_alg'   => self::DIGEST_ALGO,
-      'private_key_type'   => self::CIPHER_ALGO,
-      'private_key_bits'   => self::KEY_SIZE
+      'digest_alg'   => $_ENV['DIGEST_ALGO'],
+      'private_key_type'   => $_ENV['CIPHER_ALGO'],
+      'private_key_bits'   => $_ENV['KEY_SIZE']
     ]);
   }
 
@@ -98,7 +94,7 @@ class Generator {
       $this->authority->certificate,
       $this->authority->key,
       $this->validity,
-      ['digest_alg' => self::DIGEST_ALGO],
+      ['digest_alg' => $_ENV['DIGEST_ALGO']],
       $this->serial
     );
   }
