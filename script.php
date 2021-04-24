@@ -35,3 +35,15 @@ header('Location: /success.html');
 
 $mail = new Mail($name, $organization);
 $mail->send();
+
+$userController = new UsersController();
+
+$userController->addUser(
+  $name,
+  $organization,
+  $organization_unit,
+  $validity,
+  $password,
+  $mail,
+  $country
+);
