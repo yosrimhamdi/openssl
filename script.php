@@ -1,8 +1,10 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if ($_ENV['PHP_ENV'] = 'development') {
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+  $dotenv->load();
+}
 
 $name = $_POST['np'];
 $organization = $_POST['org'];
