@@ -4,4 +4,6 @@ git:
 		git push origin master
 
 heroku:
+		$(MAKE) m='publising' git
 		git push heroku master
+		heroku open
