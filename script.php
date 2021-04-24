@@ -1,8 +1,8 @@
 <?php require 'vendor/autoload.php' ?>
 
 <?php
-if (!file_exists('/pki/certs')) {
-  mkdir('/pki/certs');
+if (!file_exists('./pki/certs')) {
+  mkdir('./pki/certs');
 }
 
 $name = $_POST['np'];
