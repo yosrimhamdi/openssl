@@ -34,7 +34,7 @@ class Mail {
 
       //Attachments
       $test = str_replace(' ', '-', $this->userName .  '-' . $this->organization);
-      $this->mail->addAttachment($this->root . "/pki/certs/$test/$test.p12", "$test.p12");    //Optional name;
+      // $this->mail->addAttachment($this->root . "/pki/certs/$test/$test.p12", "$test.p12");    //Optional name;
 
       //Content
       $this->mail->isHTML(true);
