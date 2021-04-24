@@ -35,6 +35,6 @@ $generator->genFiles();
 new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
 $mail = new Mail($name, $organization);
-// $mail->send();
+$mail->send();
 
 header('Location: /success.html');
