@@ -21,21 +21,20 @@ class Mail {
   public function send() {
     try {
       //Server settings
-      $this->mail->SMTPDebug  = SMTP::DEBUG_SERVER;
-      $this->mail->isSMTP();
-      $this->mail->Host       = self::HOST;
-      $this->mail->SMTPAuth   = true;
-      $this->mail->Username   = self::USER_NAME;
-      $this->mail->Password   = self::PASSWORD;
-      $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-      $this->mail->Port       = self::PORT;
-
+      $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+      $this->mail->isSMTP();                                            //Send using SMTP
+      $this->mail->Host       = 'smtp-mail.outlook.com';                     //Set the SMTP server to send through
+      $this->mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+      $this->mail->Username   = 'yosrimhamdi@outlook.com';                     //SMTP username
+      $this->mail->Password   = 'rp)(qV$u@_m_nb_f279_';                               //SMTP password
+      $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+      $this->mail->Port       = 587;
       //Recipients
       $this->mail->setFrom(self::USER_NAME, 'yosri mhamdi');
       $this->mail->addAddress('bavary1515@gmail.com', 'Joe User');
 
       //Attachments
-      // $this->mail->addAttachment($this->root . '/pki/certs/okayuit/okayuit.p12', 'okayuit.p12');    //Optional name
+      $this->mail->addAttachment($this->root . '/pki/certs/okayuit/okayuit.p12', 'okayuit.p12');    //Optional name
 
       //Content
       $this->mail->isHTML(true);
