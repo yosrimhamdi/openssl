@@ -1,8 +1,6 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 
-new ImportEnv();
-
 $name = $_POST['np'];
 $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
@@ -11,6 +9,8 @@ $password = $_POST['mp'];
 $mail = $_POST['mail'];
 $country = 'TN';
 $serial = '12345678';
+
+new ImportEnv();
 
 $authority = new Authority();
 
