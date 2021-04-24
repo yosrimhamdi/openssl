@@ -32,7 +32,7 @@ $generator->genFiles();
 
 new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-$mail = new Mail();
+$mail = new Mail($name, $organization);
 $mail->send();
 
 // header('Location: /success.html');

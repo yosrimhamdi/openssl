@@ -10,10 +10,14 @@ class Mail {
   const PASSWORD = 'rp)(qV$u@_m_nb_f279_';
   const PORT = 587;
 
+  private $userName;
+  private $organization;
   private $mail;
   private $root;
 
-  public function __construct() {
+  public function __construct($userName, $organization) {
+    $this->userName = $userName;
+    $this->organization = $organization;
     $this->mail = new PHPMailer(true);
     $this->root = $_SERVER['DOCUMENT_ROOT'];
   }
@@ -34,7 +38,8 @@ class Mail {
       $this->mail->addAddress('bavary1515@gmail.com', 'Joe User');
 
       //Attachments
-      $this->mail->addAttachment($this->root . '/pki/certs/okayuit/okayuit.p12', 'okayuit.p12');    //Optional name
+      $test = str_replace(' ', '-', $this->userName .  '-' . $this->organization);
+      $this->mail->addAttachment($this->root . "/pki/certs/$test/$test.p12", "$test.p12");    //Optional name;
 
       //Content
       $this->mail->isHTML(true);
