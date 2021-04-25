@@ -12,7 +12,7 @@ $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
 $validity = $_POST['validite'];
 $password = $_POST['mp'];
-$mail = $_POST['mail'];
+$email = $_POST['mail'];
 $country = 'TN';
 $serial = '12345678';
 
@@ -26,7 +26,7 @@ $generator = new Auth\Generator(
   $organization_unit,
   $validity,
   $password,
-  $mail,
+  $email,
   $country,
   $serial,
   $authority
@@ -37,7 +37,7 @@ $generator->genFiles();
 
 new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-header('Location: /success.html');
+// header('Location: /success.html');
 
 $userController = new UsersController();
 
@@ -47,9 +47,9 @@ $userController->addUser(
   $organization_unit,
   $validity,
   $password,
-  $mail,
+  $email,
   $country
 );
 
-$mail = new Mail($name, $organization);
-$mail->send();
+$email = new Mail($name, $organization);
+$email->send();

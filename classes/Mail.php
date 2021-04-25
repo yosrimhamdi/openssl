@@ -5,13 +5,13 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class Mail {
-  private $userName;
+  private $name;
   private $organization;
-  private $mail;
+  private $email;
   private $root;
 
-  public function __construct($userName, $organization) {
-    $this->userName = $userName;
+  public function __construct($name, $organization) {
+    $this->name = $name;
     $this->organization = $organization;
     $this->mail = new PHPMailer(true);
     $this->root = $_SERVER['DOCUMENT_ROOT'];
@@ -29,11 +29,11 @@ class Mail {
       $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
       $this->mail->Port       = $_ENV['MAIL_PORT'];
       //Recipients
-      $this->mail->setFrom($_ENV['MAIL_USERNAME'], 'yosri mhamdi');
+      $this->mail->setFrom('bavary1515@gmail.com', 'yosri mhamdi');
       $this->mail->addAddress('bavary1515@gmail.com', 'Joe User');
 
       //Attachments
-      $test = str_replace(' ', '-', $this->userName .  '-' . $this->organization);
+      $test = str_replace(' ', '-', $this->name .  '-' . $this->organization);
       $this->mail->addAttachment($this->root . "/pki/certs/$test/$test.p12", "$test.p12");    //Optional name;
 
       //Content

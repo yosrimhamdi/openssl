@@ -8,20 +8,20 @@ class Generator {
   private $organization_unit;
   private $validity;
   private $password;
-  private $mail;
+  private $email;
   private $country;
   private $serial;
 
   private $authority;
   private $files = [];
 
-  function __construct($name, $organization, $organization_unit, $validity, $password, $mail, $country, $serial, $authority) {
+  function __construct($name, $organization, $organization_unit, $validity, $password, $email, $country, $serial, $authority) {
     $this->name = $name;
     $this->organization = $organization;
     $this->organization_unit = $organization_unit;
     $this->validity = $validity;
     $this->password = $password;
-    $this->mail = $mail;
+    $this->mail = $email;
     $this->country = $country;
     $this->serial = $serial;
     $this->authority = $authority;

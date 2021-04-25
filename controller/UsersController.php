@@ -6,7 +6,7 @@ class UsersController extends Users {
     $organization_unit,
     $validity,
     $password,
-    $mail,
+    $email,
     $country
   ) {
     parent::addUser(
@@ -15,7 +15,7 @@ class UsersController extends Users {
       $organization_unit,
       $validity,
       $password,
-      $mail,
+      $email,
       $country
     );
   }

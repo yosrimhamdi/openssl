@@ -6,7 +6,7 @@ class Users extends Dbh {
     $organization_unit,
     $validity,
     $password,
-    $mail,
+    $email,
     $country
   ) {
     $sql  = "INSERT INTO users(name, ";
@@ -27,7 +27,7 @@ class Users extends Dbh {
       $organization_unit,
       $validity,
       $password,
-      $mail,
+      $email,
       $country
     ]);
   }
