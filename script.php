@@ -1,6 +1,12 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 
+if (!isset($_POST['submit'])) {
+  header('Location: /');
+
+  exit();
+}
+
 $name = $_POST['np'];
 $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
