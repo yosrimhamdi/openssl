@@ -37,7 +37,7 @@ $generator->genFiles();
 
 new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-// header('Location: /success.html');
+header('Location: /success.html');
 
 $userController = new UsersController();
 
