@@ -32,7 +32,7 @@ class Mail {
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
       $mail->Port       = $_ENV['MAIL_PORT'];
       //Recipients
-      $mail->setFrom('bavary1515@gmail.com', 'yosri mhamdi');
+      $mail->setFrom('bavary1515@gmail.com', 'Yosri Mhamdi');
       $mail->addAddress($this->email, $this->name);
 
       //Attachments
