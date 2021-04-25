@@ -12,7 +12,7 @@ $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
 $validity = $_POST['validite'];
 $password = $_POST['mp'];
-$email = $_POST['mail'];
+$email = $_POST['email'];
 $country = 'TN';
 $serial = '12345678';
 
@@ -51,5 +51,5 @@ $userController->addUser(
   $country
 );
 
-$email = new Mail($name, $organization);
+$email = new Mail($name, $email, $organization);
 $email->send();
