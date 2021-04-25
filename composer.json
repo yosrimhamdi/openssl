@@ -15,7 +15,8 @@
     "classmap": [
       "classes/",
       "model/",
-      "controller/"
+      "controller/",
+      "mail/"
     ]
   }
 }

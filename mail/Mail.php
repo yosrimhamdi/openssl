@@ -40,9 +40,11 @@ class Mail {
       $mail->addAttachment($this->root . "/pki/certs/$test/$test.p12", "$test.p12");    //Optional name;
 
       //Content
+      $mailTemplate = file_get_contents($this->root . '/mail/template.html');
+
       $mail->isHTML(true);
-      $mail->Subject = 'Here is the subject';
-      $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+      $mail->Subject = 'P12 Authentication File';
+      $mail->Body    = $mailTemplate;
       $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
       $mail->send();
