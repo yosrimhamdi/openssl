@@ -41,6 +41,7 @@ class Mail {
 
       //Content
       $mailTemplate = file_get_contents($this->root . '/mail/template.html');
+      $mailTemplate = str_replace('%DOMAIN%', $_SERVER['HTTP_REFERER'], $mailTemplate);
 
       $mail->isHTML(true);
       $mail->Subject = 'P12 Authentication File';
