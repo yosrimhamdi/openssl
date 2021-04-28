@@ -4,11 +4,6 @@ class Getter  {
     session_start();
   }
 
-  public function __destruct() {
-    session_unset();
-    session_destroy();
-  }
-
   public function get($ref, $input) {
     return $_SESSION[$ref][$input] ?? '';
   }

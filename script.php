@@ -1,10 +1,7 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
-
 if (!isset($_POST['submit'])) {
-  header('Location: /');
-
-  exit();
+  redirect('/');
 }
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -70,5 +67,5 @@ $userController->addUser(
   $country
 );
 
-// $email = new Mail($name, $email, $organization);
-// $email->send();
+$email = new Mail($name, $email, $organization);
+$email->send();

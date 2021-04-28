@@ -19,6 +19,10 @@
       "controller/",
       "mail/",
       "validator"
+    ],
+    "files": [
+      "functions/session_close.php",
+      "functions/redirect.php"
     ]
   }
 }
