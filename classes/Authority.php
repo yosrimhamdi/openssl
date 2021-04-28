@@ -3,7 +3,6 @@ class Authority {
   public $certificate;
   public $key;
 
-
   function __construct() {
     $root = $_SERVER['DOCUMENT_ROOT'];
 
