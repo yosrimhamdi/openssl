@@ -39,7 +39,7 @@ $validator->validate();
 
 $authority = new Authority();
 
-$generator = new Auth\Generator(
+$generator = new Pki\Generator(
   $name,
   $organization,
   $organization_unit,

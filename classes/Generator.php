@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth;
+namespace Pki;
 
 class Generator {
   private $name;
