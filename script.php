@@ -70,5 +70,5 @@ $userController->addUser(
   $country
 );
 
-$email = new Mail($name, $email, $organization);
-$email->send();
+// $email = new Mail($name, $email, $organization);
+// $email->send();
