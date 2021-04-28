@@ -16,7 +16,8 @@ $email = $_POST['email'];
 $country = 'TN';
 $serial = '12345678';
 
-new ImportEnv();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $authority = new Authority();
 
