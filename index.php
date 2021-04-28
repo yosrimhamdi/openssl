@@ -5,35 +5,35 @@ $getter = new Getter();
 $name = 'np';
 $name = [
   $getter->getClass($name),
-  $getter->get('value', $name),
+  $getter->get('values', $name),
   $getter->get('errors' ,$name),
 ];
 
 $password = 'mp';
 $password = [
   $getter->getClass($password),
-  $getter->get('value',$password),
+  $getter->get('values',$password),
   $getter->get('errors',$password),
 ];
 
 $organization = 'org';
 $organization = [
   $getter->getClass($organization),
-  $getter->get('value',$organization),
+  $getter->get('values',$organization),
   $getter->get('errors',$organization),
 ];
 
 $departement = 'dept';
 $departement = [
   $getter->getClass($departement),
-  $getter->get('value',$departement),
+  $getter->get('values',$departement),
   $getter->get('errors',$departement),
 ];
 
 $email = 'email';
 $email = [
   $getter->getClass($email),
-  $getter->get('value',$email),
+  $getter->get('values',$email),
   $getter->get('errors',$email),
 ];
 ?>
