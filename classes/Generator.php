@@ -21,7 +21,7 @@ class Generator {
     $this->organization_unit = $organization_unit;
     $this->validity = $validity;
     $this->password = $password;
-    $this->mail = $email;
+    $this->email = $email;
     $this->country = $country;
     $this->serial = $serial;
     $this->authority = $authority;
@@ -69,7 +69,7 @@ class Generator {
       'organizationName' => $this->organization,
       'organizationalUnitName' => $this->organization_unit,
       'commonName' => $this->name,
-      'emailAddress' => $this->mail
+      'emailAddress' => $this->email
     ];
 
     return openssl_csr_new($userConfig, $this->files['keyPair']);
