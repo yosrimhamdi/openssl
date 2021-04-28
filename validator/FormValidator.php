@@ -21,6 +21,8 @@ class FormValidator extends Validators {
         );
       }
     }
+
+    $this->redirect();
   }
 
   private function validateInput($input, $validator, $errMessage) {
@@ -31,5 +33,13 @@ class FormValidator extends Validators {
     }
 
     $_SESSION['values'][$input] = $value;
+  }
+
+  private function redirect() {
+    if (!empty($_SESSION['errors'])) {
+      header('Location: /');
+
+      exit();
+    }
   }
 }

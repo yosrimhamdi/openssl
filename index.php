@@ -1,3 +1,45 @@
+<?php require 'vendor/autoload.php' ?>
+<?php session_start();
+
+$name = 'np';
+$name = [
+  FormValidator::getClassName($name),
+  FormValidator::getValue($name),
+  FormValidator::getError($name),
+];
+
+$password = 'mp';
+$password = [
+  FormValidator::getClassName($password),
+  FormValidator::getValue($password),
+  FormValidator::getError($password),
+];
+
+$organization = 'org';
+$organization = [
+  FormValidator::getClassName($organization),
+  FormValidator::getValue($organization),
+  FormValidator::getError($organization),
+];
+
+$departement = 'dept';
+$departement = [
+  FormValidator::getClassName($departement),
+  FormValidator::getValue($departement),
+  FormValidator::getError($departement),
+];
+
+$email = 'email';
+$email = [
+  FormValidator::getClassName($email),
+  FormValidator::getValue($email),
+  FormValidator::getError($email),
+];
+
+session_unset();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,26 +66,32 @@
         <div class="form-group">
           <input
             type="text"
-            class="form-control item"
+            class="<?php echo $name[0] ?>"
             name="np"
             placeholder="Username"
+            value="<?php echo $name[1] ?>"
           />
+          <div class="invalid-feedback"><?php echo $name[2] ?></div>
         </div>
         <div class="form-group">
           <input
             type="text"
-            class="form-control item"
+            class="<?php echo $organization[0] ?>"
             name="org"
             placeholder="Organization"
+            value="<?php echo $organization[1] ?>"
           />
+          <div class="invalid-feedback"><?php echo $organization[2] ?></div>
         </div>
         <div class="form-group">
           <input
             type="text"
-            class="form-control item"
+            class="<?php echo $departement[0] ?>"
             name="dept"
             placeholder="Department"
+            value="<?php echo $departement[1] ?>"
           />
+          <div class="invalid-feedback"><?php echo $departement[2] ?></div>
         </div>
         <div class="form-group">
           <select
@@ -59,18 +107,22 @@
         <div class="form-group">
           <input
             type="password"
-            class="form-control item"
+            class="<?php echo $password[0] ?>"
             name="mp"
             placeholder="Password"
+            value="<?php echo $password[1] ?>"
           />
+          <div class="invalid-feedback"><?php echo $password[2] ?></div>
         </div>
         <div class="form-group">
           <input
             type="text"
-            class="form-control item"
+            class="<?php echo $email[0] ?>"
             name="email"
             placeholder="Email"
+            value="<?php echo $email[1] ?>"
           />
+          <div class="invalid-feedback"><?php echo $email[2] ?></div>
         </div>
         <div class="form-group">
           <input

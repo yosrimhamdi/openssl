@@ -34,10 +34,7 @@ $config = [
 $validator = new FormValidator($config);
 $validator->validate();
 
-print_r($_SESSION['errors']);
-print_r($_SESSION['values']);
-
-/* $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $authority = new Authority();
@@ -74,4 +71,4 @@ $userController->addUser(
 );
 
 $email = new Mail($name, $email, $organization);
-$email->send(); */
+$email->send();
