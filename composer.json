@@ -18,7 +18,7 @@
       "model/",
       "controller/",
       "mail/",
-      "validator"
+      "validator/"
     ],
     "files": [
       "functions/session_close.php",
