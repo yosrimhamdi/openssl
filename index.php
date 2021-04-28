@@ -1,7 +1,6 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
 $getter = new Getter();
-// $getter->init();
 
 $name = 'np';
 $name = [
