@@ -16,7 +16,28 @@ $email = $_POST['email'];
 $country = 'TN';
 $serial = '12345678';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$config = [
+  'hasValue' => [
+    'inputs' => ['np', 'org', 'dept'],
+    'errMessage' => 'cannot be empty'
+  ],
+  'isEmail' => [
+    'inputs' => ['email'],
+    'errMessage' => 'invalid email'
+  ],
+  'isPassword' => [
+    'inputs' => ['mp'],
+    'errMessage' => 'passwrod must be at least 8 chars'
+  ]
+];
+
+$validator = new FormValidator($config);
+$validator->validate();
+
+print_r($_SESSION['errors']);
+print_r($_SESSION['values']);
+
+/* $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $authority = new Authority();
@@ -53,4 +74,4 @@ $userController->addUser(
 );
 
 $email = new Mail($name, $email, $organization);
-$email->send();
+$email->send(); */

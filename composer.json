@@ -9,14 +9,16 @@
   ],
   "require": {
     "phpmailer/phpmailer": "^6.4",
-    "vlucas/phpdotenv": "^5.3"
+    "vlucas/phpdotenv": "^5.3",
+    "voku/email-check": "^3.1"
   },
   "autoload": {
     "classmap": [
       "classes/",
       "model/",
       "controller/",
-      "mail/"
+      "mail/",
+      "validator"
     ]
   }
 }
