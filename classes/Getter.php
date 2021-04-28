@@ -1,5 +1,5 @@
 <?php
-class Getters  {
+class Getter  {
   public static function getValue($input) {
     if (isset($_SESSION['values'])) {
       return $_SESSION['values'][$input];

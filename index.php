@@ -3,37 +3,37 @@
 
 $name = 'np';
 $name = [
-  FormValidator::getClassName($name),
-  FormValidator::getValue($name),
-  FormValidator::getError($name),
+  Getter::getClassName($name),
+  Getter::getValue($name),
+  Getter::getError($name),
 ];
 
 $password = 'mp';
 $password = [
-  FormValidator::getClassName($password),
-  FormValidator::getValue($password),
-  FormValidator::getError($password),
+  Getter::getClassName($password),
+  Getter::getValue($password),
+  Getter::getError($password),
 ];
 
 $organization = 'org';
 $organization = [
-  FormValidator::getClassName($organization),
-  FormValidator::getValue($organization),
-  FormValidator::getError($organization),
+  Getter::getClassName($organization),
+  Getter::getValue($organization),
+  Getter::getError($organization),
 ];
 
 $departement = 'dept';
 $departement = [
-  FormValidator::getClassName($departement),
-  FormValidator::getValue($departement),
-  FormValidator::getError($departement),
+  Getter::getClassName($departement),
+  Getter::getValue($departement),
+  Getter::getError($departement),
 ];
 
 $email = 'email';
 $email = [
-  FormValidator::getClassName($email),
-  FormValidator::getValue($email),
-  FormValidator::getError($email),
+  Getter::getClassName($email),
+  Getter::getValue($email),
+  Getter::getError($email),
 ];
 
 session_unset();
