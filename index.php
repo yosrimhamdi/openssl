@@ -1,43 +1,42 @@
 <?php require 'vendor/autoload.php' ?>
-<?php session_start();
+<?php
+$getter = new Getter();
+// $getter->init();
 
 $name = 'np';
 $name = [
-  Getter::getClassName($name),
-  Getter::getValue($name),
-  Getter::getError($name),
+  $getter->getClass($name),
+  $getter->get('value', $name),
+  $getter->get('error' ,$name),
 ];
 
 $password = 'mp';
 $password = [
-  Getter::getClassName($password),
-  Getter::getValue($password),
-  Getter::getError($password),
+  $getter->getClass($password),
+  $getter->get('value',$password),
+  $getter->get('error',$password),
 ];
 
 $organization = 'org';
 $organization = [
-  Getter::getClassName($organization),
-  Getter::getValue($organization),
-  Getter::getError($organization),
+  $getter->getClass($organization),
+  $getter->get('value',$organization),
+  $getter->get('error',$organization),
 ];
 
 $departement = 'dept';
 $departement = [
-  Getter::getClassName($departement),
-  Getter::getValue($departement),
-  Getter::getError($departement),
+  $getter->getClass($departement),
+  $getter->get('value',$departement),
+  $getter->get('error',$departement),
 ];
 
 $email = 'email';
 $email = [
-  Getter::getClassName($email),
-  Getter::getValue($email),
-  Getter::getError($email),
+  $getter->getClass($email),
+  $getter->get('value',$email),
+  $getter->get('error',$email),
 ];
-
-session_unset();
-session_destroy();
 ?>
 
 <!DOCTYPE html>

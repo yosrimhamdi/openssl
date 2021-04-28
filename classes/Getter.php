@@ -1,22 +1,19 @@
 <?php
 class Getter  {
-  public static function getValue($input) {
-    if (isset($_SESSION['values'])) {
-      return $_SESSION['values'][$input];
-    }
+  public function __construct() {
+    session_start();
   }
 
-  public static function getError($input) {
-    if (isset($_SESSION['errors']) && isset($_SESSION['errors'][$input])) {
-      return $_SESSION['errors'][$input];
-    }
+  public function __destruct() {
+    session_unset();
+    session_destroy();
   }
 
-  public static function getClassName($input) {
-    if (isset($_SESSION['errors'][$input])) {
-      return 'form-control item is-invalid';
-    } else {
-      return 'form-control item';
-    }
+  public function get($ref, $input) {
+    return $_SESSION[$ref][$input] ?? '';
+  }
+
+  public function getClass($input) {
+    return isset($_SESSION['errors'][$input]) ? 'form-control item is-invalid' : 'form-control item';
   }
 }

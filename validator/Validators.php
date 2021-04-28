@@ -1,5 +1,5 @@
 <?php
-class Validators extends Getters {
+class Validators {
   protected function hasValue($value) {
     return !empty($value);
   }
