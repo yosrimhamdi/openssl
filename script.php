@@ -37,38 +37,38 @@ $config = [
 $validator = new FormValidator($config);
 $validator->validate();
 
-// $authority = new Authority();
+$authority = new Authority();
 
-// $generator = new Auth\Generator(
-//   $name,
-//   $organization,
-//   $organization_unit,
-//   $validity,
-//   $password,
-//   $email,
-//   $country,
-//   $serial,
-//   $authority
-// );
+$generator = new Auth\Generator(
+  $name,
+  $organization,
+  $organization_unit,
+  $validity,
+  $password,
+  $email,
+  $country,
+  $serial,
+  $authority
+);
 
-// $generator->genCertsDir();
-// $generator->genFiles();
+$generator->genCertsDir();
+$generator->genFiles();
 
-// new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
+new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
 
-// header('Location: /success.html');
+header('Location: /success.html');
 
-// $userController = new UsersController();
+$userController = new UsersController();
 
-// $userController->addUser(
-//   $name,
-//   $organization,
-//   $organization_unit,
-//   $validity,
-//   $password,
-//   $email,
-//   $country
-// );
+$userController->addUser(
+  $name,
+  $organization,
+  $organization_unit,
+  $validity,
+  $password,
+  $email,
+  $country
+);
 
-// $email = new Mail($name, $email, $organization);
-// $email->send();
+$email = new Mail($name, $email, $organization);
+$email->send();
