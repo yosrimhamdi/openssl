@@ -8,7 +8,7 @@ if (!isset($_POST['submit'])) {
 }
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 $name = $_POST['np'];
 $organization = $_POST['org'];
