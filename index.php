@@ -6,35 +6,35 @@ $name = 'np';
 $name = [
   $getter->getClass($name),
   $getter->get('value', $name),
-  $getter->get('error' ,$name),
+  $getter->get('errors' ,$name),
 ];
 
 $password = 'mp';
 $password = [
   $getter->getClass($password),
   $getter->get('value',$password),
-  $getter->get('error',$password),
+  $getter->get('errors',$password),
 ];
 
 $organization = 'org';
 $organization = [
   $getter->getClass($organization),
   $getter->get('value',$organization),
-  $getter->get('error',$organization),
+  $getter->get('errors',$organization),
 ];
 
 $departement = 'dept';
 $departement = [
   $getter->getClass($departement),
   $getter->get('value',$departement),
-  $getter->get('error',$departement),
+  $getter->get('errors',$departement),
 ];
 
 $email = 'email';
 $email = [
   $getter->getClass($email),
   $getter->get('value',$email),
-  $getter->get('error',$email),
+  $getter->get('errors',$email),
 ];
 ?>
 
