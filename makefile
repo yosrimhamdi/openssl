@@ -7,6 +7,9 @@ heroku:
 		git push heroku master
 		heroku open
 
+logs:
+		heroku logs --tail
+
 both:
 	$(MAKE) git
 	$(MAKE) heroku

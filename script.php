@@ -7,6 +7,8 @@ if (!isset($_POST['submit'])) {
   exit();
 }
 
+new ImportEnv();
+
 $name = $_POST['np'];
 $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
@@ -33,9 +35,6 @@ $config = [
 
 $validator = new FormValidator($config);
 $validator->validate();
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 $authority = new Authority();
 
