@@ -1,6 +1,6 @@
 <?php require 'vendor/autoload.php' ?>
 <?php
-if (!isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   redirect('/');
 }
 
