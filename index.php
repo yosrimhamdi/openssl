@@ -69,17 +69,13 @@ $email = [
         <input type="text" class="<?php echo $departement[0] ?>" name="dept" placeholder="Department" value="<?php echo $departement[1] ?>" />
         <div class="invalid-feedback"><?php echo $departement[2] ?></div>
       </div>
-      <!-- <div class="form-group">
-          <select
-            class="form-select item select"
-            aria-label="Default select example"
-            name="validite"
-          >
-            <option value="365" selected>Validite: one year</option>
-            <option value="730">Validite: two years</option>
-            <option value="1095">Validite: three years</option>
-          </select>
-        </div> -->
+      <div class="form-group">
+        <select class="form-select item select" aria-label="Default select example" name="validite">
+          <option value="365" selected>Validite: one year</option>
+          <option value="730">Validite: two years</option>
+          <option value="1095">Validite: three years</option>
+        </select>
+      </div>
       <div class="form-group">
         <input type="password" class="<?php echo $password[0] ?>" name="mp" placeholder="Password" value="<?php echo $password[1] ?>" />
         <div class="invalid-feedback"><?php echo $password[2] ?></div>
