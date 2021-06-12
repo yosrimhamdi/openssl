@@ -65,17 +65,11 @@ $email = [
         <input type="text" class="<?php echo $organization[0] ?>" name="org" placeholder="Organization" value="<?php echo $organization[1] ?>" />
         <div class="invalid-feedback"><?php echo $organization[2] ?></div>
       </div>
+      <div class="form-group">
+        <input type="text" class="<?php echo $departement[0] ?>" name="dept" placeholder="Department" value="<?php echo $departement[1] ?>" />
+        <div class="invalid-feedback"><?php echo $departement[2] ?></div>
+      </div>
       <!-- <div class="form-group">
-          <input
-            type="text"
-            class="<?php echo $departement[0] ?>"
-            name="dept"
-            placeholder="Department"
-            value="<?php echo $departement[1] ?>"
-          />
-          <div class="invalid-feedback"><?php echo $departement[2] ?></div>
-        </div>
-        <div class="form-group">
           <select
             class="form-select item select"
             aria-label="Default select example"
