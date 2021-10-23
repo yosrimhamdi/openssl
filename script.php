@@ -1,12 +1,10 @@
-<?php require 'vendor/autoload.php' ?>
+<?php require 'vendor/autoload.php'; ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   redirect('/');
 }
-
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
-
 $name = $_POST['np'];
 $organization = $_POST['org'];
 $organization_unit = $_POST['dept'];
@@ -15,27 +13,21 @@ $password = $_POST['mp'];
 $email = $_POST['email'];
 $country = 'TN';
 $serial = '12345678';
-
 $config = [
   'hasValue' => [
     'inputs' => ['np', 'org', 'dept'],
-    'errMessage' => 'cannot be empty'
+    'errMessage' => 'cannot be empty',
   ],
-  'isEmail' => [
-    'inputs' => ['email'],
-    'errMessage' => 'invalid email'
-  ],
+  'isEmail' => ['inputs' => ['email'], 'errMessage' => 'invalid email'],
   'isPassword' => [
     'inputs' => ['mp'],
-    'errMessage' => 'passwrod must be at least 8 chars'
-  ]
+    'errMessage' => 'passwrod must be at least 8 chars',
+  ],
 ];
-
 $validator = new FormValidator($config);
 $validator->validate();
 
 $authority = new Authority();
-
 $generator = new Pki\Generator(
   $name,
   $organization,
@@ -47,16 +39,16 @@ $generator = new Pki\Generator(
   $serial,
   $authority
 );
-
 $generator->genCertsDir();
 $generator->genFiles();
-
-new OutputGeneratedFiles($name, $organization, $password, $generator, $authority);
-
-header('Location: /success');
-
+new OutputGeneratedFiles(
+  $name,
+  $organization,
+  $password,
+  $generator,
+  $authority
+); // header('Location: /success');
 $userController = new UsersController();
-
 $userController->addUser(
   $name,
   $organization,
@@ -66,6 +58,5 @@ $userController->addUser(
   $email,
   $country
 );
-
 $email = new Mail($name, $email, $organization);
 $email->send();
