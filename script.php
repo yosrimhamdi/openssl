@@ -47,7 +47,9 @@ new OutputGeneratedFiles(
   $password,
   $generator,
   $authority
-); // header('Location: /success');
+);
+
+header('Location: /success');
 $userController = new UsersController();
 $userController->addUser(
   $name,
